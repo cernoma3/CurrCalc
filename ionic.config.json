@@ -1,0 +1,7 @@
+{
+  "name": "CurrCalc",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
