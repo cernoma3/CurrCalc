@@ -1,17 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Exchange Rates
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Select base currency</ion-label>
+      <ion-select [(ngModel)]="baseSymbol" interface="popover" placeholder="Base currency">
+        <ion-select-option value="USD">USD</ion-select-option>
+        <ion-select-option value="CZK">BGN</ion-select-option>
+        <ion-select-option value="CAD">CAD</ion-select-option>
+        <ion-select-option value="CHF">CHF</ion-select-option>
+        <ion-select-option value="CNY">CNY</ion-select-option>
+        <ion-select-option value="EGP">EGP</ion-select-option>
+        <ion-select-option value="EUR">EUR</ion-select-option>
+        <ion-select-option value="GBP">GBP</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-button (click)="getRates()" expand="block">Display rates</ion-button>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-text><h3>Actual Exchange rates</h3></ion-text>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let rate of exchangeRate | keyvalue" style="font-size:20px">
+        {{rate.key}}: {{rate.value}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  
 </ion-content>

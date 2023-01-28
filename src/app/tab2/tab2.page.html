@@ -1,17 +1,55 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Currency Calculator
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Select base currency</ion-label>
+        <ion-select [(ngModel)]="baseSymbol" interface="popover" placeholder="Base currency">
+          <ion-select-option value="USD">USD</ion-select-option>
+          <ion-select-option value="CZK">CZK</ion-select-option>
+          <ion-select-option value="CAD">CAD</ion-select-option>
+          <ion-select-option value="CHF">CHF</ion-select-option>
+          <ion-select-option value="CNY">CNY</ion-select-option>
+          <ion-select-option value="EGP">EGP</ion-select-option>
+          <ion-select-option value="EUR">EUR</ion-select-option>
+          <ion-select-option value="GBP">GBP</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Select target currency</ion-label>
+        <ion-select [(ngModel)]="targetSymbol" interface="popover" placeholder="Target currency">
+          <ion-select-option value="USD">USD</ion-select-option>
+          <ion-select-option value="CZK">CZK</ion-select-option>
+          <ion-select-option value="CAD">CAD</ion-select-option>
+          <ion-select-option value="CHF">CHF</ion-select-option>
+          <ion-select-option value="CNY">CNY</ion-select-option>
+          <ion-select-option value="EGP">EGP</ion-select-option>
+          <ion-select-option value="EUR">EUR</ion-select-option>
+          <ion-select-option value="GBP">GBP</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-card-content>
+      <ion-label position="stacked">Amount</ion-label>
+      <ion-input [(ngModel)]="amount" [clearInput]="true" placeholder="e.g. 24.45"></ion-input>
+    </ion-card-content>
+  </ion-card>
+  <ion-button (click)="getRates()" expand="block">Calculate</ion-button>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Result:</ion-card-title>
+      <ion-text><h3>{{amount}} {{baseSymbol}} = {{result}} {{targetSymbol}}</h3></ion-text>
+      <ion-text><h5>Conversion rate: {{convRate}}</h5></ion-text>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
